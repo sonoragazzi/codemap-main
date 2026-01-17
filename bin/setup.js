@@ -4,7 +4,7 @@
  *
  * Universal setup for BOTH Claude Code AND Windsurf.
  * Configures hooks for whichever tool(s) are present.
- * Run this in your project root: npx github:sonoragazzi/codemap
+ * Run this in your project root: npx github:sonoragazzi/codemap-main
  */
 
 import fs from 'fs';

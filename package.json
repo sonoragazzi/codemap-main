@@ -21,7 +21,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sonoragazzi/codemap"
+    "url": "https://github.com/sonoragazzi/codemap-main"
   },
   "devDependencies": {
     "concurrently": "^8.2.0"
