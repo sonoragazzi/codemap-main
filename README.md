@@ -9,7 +9,7 @@
 Paste this into Claude Code or Windsurf in any project:
 
 ```bash
-npx github:JamsusMaximus/codemap
+npx github:sonoragazzi/codemap
 ```
 
 That's it! The coworking space opens automatically and your agent appears. ✨
@@ -53,7 +53,7 @@ That's it! The coworking space opens automatically and your agent appears. ✨
 ### Clone and Run Locally
 
 ```bash
-git clone https://github.com/JamsusMaximus/codemap
+git clone https://github.com/sonoragazzi/codemap
 cd codemap
 npm install
 npm run dev
@@ -64,7 +64,7 @@ Then open http://localhost:5173/coworking
 ### Setup Hooks Only (no server start)
 
 ```bash
-npx github:JamsusMaximus/codemap setup
+npx github:sonoragazzi/codemap setup
 ```
 
 ---

@@ -1,10 +1,11 @@
 {
-  "name": "codemap-hotel",
+  "name": "codemap-coworking",
   "version": "1.0.0",
-  "description": "Visualize Claude Code agents as characters in a pixel-art hotel room",
+  "description": "Visualize Claude Code and Windsurf agents as characters in a pixel-art coworking space",
   "type": "module",
   "bin": {
-    "codemap-hotel": "./bin/setup.js"
+    "codemap": "./bin/setup.js",
+    "codemap-coworking": "./bin/setup.js"
   },
   "workspaces": ["server", "client"],
   "scripts": {
@@ -15,12 +16,12 @@
     "setup": "node bin/setup.js setup",
     "start": "node bin/setup.js start"
   },
-  "keywords": ["claude", "claude-code", "visualization", "agents", "pixel-art"],
+  "keywords": ["claude", "claude-code", "windsurf", "visualization", "agents", "pixel-art", "coworking"],
   "author": "",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JamsusMaximus/codemap"
+    "url": "https://github.com/sonoragazzi/codemap"
   },
   "devDependencies": {
     "concurrently": "^8.2.0"

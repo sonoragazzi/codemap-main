@@ -4,19 +4,40 @@
  *
  * Universal setup for BOTH Claude Code AND Windsurf.
  * Configures hooks for whichever tool(s) are present.
- * Run this in your project root: npx codemap-coworking setup
+ * Run this in your project root: npx github:sonoragazzi/codemap
  */
 
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { spawn, exec } from 'child_process';
+import { spawn, exec, execSync } from 'child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CODEMAP_ROOT = path.resolve(__dirname, '..');
 const TARGET_DIR = process.cwd();
 const SERVER_PORT = 5174;
 const CLIENT_PORT = 5173;
+
+// Check if dependencies are installed, install if missing
+function ensureDependencies() {
+  const nodeModulesPath = path.join(CODEMAP_ROOT, 'node_modules');
+  const serverModulesPath = path.join(CODEMAP_ROOT, 'server', 'node_modules');
+  const clientModulesPath = path.join(CODEMAP_ROOT, 'client', 'node_modules');
+
+  if (!fs.existsSync(nodeModulesPath) || !fs.existsSync(serverModulesPath) || !fs.existsSync(clientModulesPath)) {
+    console.log('📦 Installing dependencies (first run)...\n');
+    try {
+      execSync('npm install', {
+        cwd: CODEMAP_ROOT,
+        stdio: 'inherit'
+      });
+      console.log('\n✓ Dependencies installed\n');
+    } catch (error) {
+      console.error('❌ Failed to install dependencies:', error.message);
+      process.exit(1);
+    }
+  }
+}
 
 // Hook paths (absolute - works for both tools)
 const FILE_HOOK = path.join(CODEMAP_ROOT, 'hooks', 'file-activity-hook.sh');
@@ -134,6 +155,9 @@ function startServer() {
 async function run() {
   console.log('🏢 CodeMap Coworking\n');
   console.log(`Project: ${TARGET_DIR}\n`);
+
+  // Step 0: Ensure dependencies are installed
+  ensureDependencies();
 
   // Step 1: Setup hooks if not already configured
   const settingsPath = path.join(TARGET_DIR, '.claude', 'settings.local.json');
@@ -284,6 +308,9 @@ function setup() {
   console.log('🏢 CodeMap Coworking Setup\n');
   console.log(`CodeMap installed at: ${CODEMAP_ROOT}`);
   console.log(`Target project: ${TARGET_DIR}\n`);
+
+  // Ensure dependencies for hooks to work
+  ensureDependencies();
 
   setupHooks();
 
